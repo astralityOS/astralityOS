@@ -6,6 +6,8 @@ ABSPATH=$(cd "$(dirname "$BASH_SOURCE[0]")"; pwd -P)
 
 source "${ABSPATH}/../../config"
 
+LANG=C.UTF-8
+
 echo "Creating rootfs"
 
 rm -r $builddir/rootfs
