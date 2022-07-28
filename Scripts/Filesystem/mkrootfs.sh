@@ -17,14 +17,14 @@ mkdir $builddir/rootfs
 
 debootstrap --foreign --arch $arch $suite $builddir/rootfs $mirror
 
-cp $(which qemu-$qmeuarch-static) $builddir/rootfs/bin
+cp $(which qemu-$qemuarch-static) $builddir/rootfs/bin
 
 cp chrootsetup.sh $builddir/rootfs/usr/local
 
-chroot $builddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" "/usr/local/chrootsetup.sh"
+chroot $builddir/rootfs "/bin/qemu-$qemuarch-static" "/bin/bash" "/usr/local/chrootsetup.sh"
 
 #or we can do this instead of a configurable choot script
-#LC_ALL=C chroot $builddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" <<"EOF"
+#LC_ALL=C chroot $builddir/rootfs "/bin/qemu-$qemuarch-static" "/bin/bash" <<"EOF"
 #debootstrap --second-stage
 #EOF
 
