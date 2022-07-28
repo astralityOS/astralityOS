@@ -2,37 +2,30 @@
 
 #note: we need qemu-user-static for this to work
 
-#placeholder veriables
-export devicebuilddir="../../Build/Placeholder"
+ABSPATH=$(cd "$(dirname "$BASH_SOURCE[0]")"; pwd -P)
 
-export suite="bullseye"
-
-export arch="arm64"
-export qmeuarch="aarch64"
-
-export LANG=C.UTF-8
-
-export mirror="http://deb.debian.org/debian/"
-#https://www.debian.org/mirror/list
+source "${ABSPATH}/../../config"
 
 echo "Creating rootfs"
 
-rm -r $devicebuilddir/rootfs
+rm -r $builddir/rootfs
 #cleaning failed attempts
 
-mkdir $devicebuilddir/rootfs
+mkdir $builddir/rootfs
 
-debootstrap --foreign --arch $arch $suite $devicebuilddir/rootfs $mirror
+debootstrap --foreign --arch $arch $suite $builddir/rootfs $mirror
 
-cp $(which qemu-$qmeuarch-static) $devicebuilddir/rootfs/bin
+cp $(which qemu-$qmeuarch-static) $builddir/rootfs/bin
 
-cp chrootsetup.sh $devicebuilddir/rootfs
+cp chrootsetup.sh $builddir/rootfs/usr/local
 
-chroot $devicebuilddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" "/chrootsetup.sh"
+chroot $builddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" "/usr/local/chrootsetup.sh"
 
 #or we can do this instead of a configurable choot script
-#LC_ALL=C chroot $devicebuilddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" <<"EOF"
+#LC_ALL=C chroot $builddir/rootfs "/bin/qemu-$qmeuarch-static" "/bin/bash" <<"EOF"
 #debootstrap --second-stage
 #EOF
+
+rm $builddir/rootfs/usr/local/chrootsetup.sh
 
 echo "rootfs is done"
