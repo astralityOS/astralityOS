@@ -1,0 +1,3 @@
+kernel_repo = "https://github.com/raspberrypi/linux"
+
+kernel_defconfig = "bcm2709_defconfig"
