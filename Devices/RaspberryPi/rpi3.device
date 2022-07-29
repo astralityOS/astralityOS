@@ -1,12 +1,10 @@
 kernel_repo="https://github.com/raspberrypi/linux"
-
 kernel_defconfig="bcm2709_defconfig"
-
 kernel_image="zImage"
 kernel_arch="kernel7l"
-
 cross_compiler="arm-linux-gnueabihf-"
 arch="arm"
-
 qemuarch="arm"
+
+bootloader="rpi"
 

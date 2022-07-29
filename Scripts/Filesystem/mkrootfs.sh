@@ -10,7 +10,7 @@ builddir="$4"
 
 echo "Creating rootfs"
 
-rm -r $builddir/rootfs
+rm -rf $builddir/rootfs
 #cleaning failed attempts
 
 mkdir -p $builddir/rootfs
