@@ -21,6 +21,9 @@ cp $(which qemu-$qemuarch-static) $builddir/rootfs/bin
 
 cp chrootsetup.sh $builddir/rootfs/usr/local
 
+#NOTE: probably change $fstab to a path ig
+cp $fstab $builddir/rootfs/etc/
+
 chroot $builddir/rootfs "/bin/qemu-$qemuarch-static" "/bin/bash" "/usr/local/chrootsetup.sh"
 
 #or we can do this instead of a configurable choot script
