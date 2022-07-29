@@ -19,7 +19,9 @@ debootstrap --foreign --arch $arch $suite $builddir/rootfs $mirror
 
 cp $(which qemu-$qemuarch-static) $builddir/rootfs/bin
 
-cp chrootsetup.sh $builddir/rootfs/usr/local
+mkdir -p $builddir/rootfs/usr/local/
+
+cp chrootsetup.sh $builddir/rootfs/usr/local/
 
 #NOTE: probably change $fstab to a path ig
 cp $fstab $builddir/rootfs/etc/
