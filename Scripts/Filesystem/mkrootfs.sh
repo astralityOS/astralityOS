@@ -2,18 +2,18 @@
 
 #note: we need qemu-user-static for this to work
 
-ABSPATH=$(cd "$(dirname "$BASH_SOURCE[0]")"; pwd -P)
+source "$2"
+source "$3"
 
-source "${ABSPATH}/../../config"
-
-LANG=C.UTF-8
+ROOT=$1
+builddir="$4"
 
 echo "Creating rootfs"
 
 rm -r $builddir/rootfs
 #cleaning failed attempts
 
-mkdir $builddir/rootfs
+mkdir -p $builddir/rootfs
 
 debootstrap --foreign --arch $arch $suite $builddir/rootfs $mirror
 

@@ -8,3 +8,5 @@ kernel_arch="kernel7l"
 cross_compiler="arm-linux-gnueabihf-"
 arch="arm"
 
+qemuarch="arm"
+
