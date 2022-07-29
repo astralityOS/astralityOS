@@ -15,6 +15,7 @@ EOF
 if [[ $suite == *"bullseye"* ]]; then
 
 cat >> /etc/apt/sources.list <<EOF
+
 deb http://deb.debian.org/debian-security/ bullseye-security main
 deb-src http://deb.debian.org/debian-security/ bullseye-security main
 EOF
@@ -22,6 +23,7 @@ EOF
 else
 
 cat >> /etc/apt/sources.list <<EOF
+
 deb http://deb.debian.org/debian-security/ $suite/updates main
 deb-src http://deb.debian.org/debian-security/ $suite/updates main
 EOF
