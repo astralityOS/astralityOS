@@ -8,5 +8,5 @@ LANG=C.UTF-8
 
 mirror="http://deb.debian.org/debian/"
 
-TARGET_VENDOR = RaspberryPi
-TARGET_NAME = rpi3
+TARGET_VENDOR="RaspberryPi"
+TARGET_NAME="rpi3"
