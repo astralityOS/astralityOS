@@ -1,0 +1,3 @@
+echo "creating system.img"
+
+
