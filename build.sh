@@ -14,7 +14,14 @@ error() {
  exit 1
 }
 
-. ${rootdir}/config.env
+if [ -f ${rootdir}/config.env ]; then
+    . ${rootdir}/config.env
+else
+    echo "config.env not found, running initial config"
+    echo " "
+    . ${rootdir}/setup.sh
+    . ${rootdir}/config.env
+fi
 
 . ${rootdir}/devices/$device/$device.env
 
