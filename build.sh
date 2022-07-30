@@ -13,37 +13,10 @@ error() {
  echo -e "\e[1;31m[ERROR]\e[0m $1" >&2
  exit 1
 }
- 
-echo "what device do you want to build for?"
- 
-ls ${rootdir}/devices/
- 
-read -r -p "[/*] E.g. 'gprime': " device
+
+. ${rootdir}/config.env
 
 . ${rootdir}/devices/$device/$device.env
-
-echo "what debian suite do you want?"
-
-read -r -p "[/*] E.g. 'bullseye': " suite
-
-echo "what username do you want?"
-
-read -r -p "[/*] E.g. 'bob': " username
-
-read -r -p "password: " -s password
-echo ""
-echo "what hostname do you want?"
-
-read -r -p "[/*] E.g. 'sbcname': " hostname
-
-echo "what extra packages do you want to install?"
-
-read -r -p "[/*] E.g. 'neofetch': " packages
-
-if [ -f ${rootdir}/devices/$device/device_options.sh ]; then
-    echo "selected device has custom options, asking them now"
-    . ${rootdir}/devices/$device/device_options.sh
-fi
 
 if [[ $(uname -m) == *"$arch"* ]]; then
     cross=0
